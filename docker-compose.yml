@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  nginx:
-    image: nginx:latest
-    container_name: nginx_container
+  apache:
+    image: httpd:latest
+    container_name: apache_container
     ports:
       - "5002:80"      # Porta para acessar o servidor
     volumes:
-      - ./html:/usr/share/nginx/html:ro         # Diretório para os arquivos estáticos
+      - ./html:/usr/local/apache2/htdocs:ro   # Diretório para os arquivos estáticos
     restart: always
