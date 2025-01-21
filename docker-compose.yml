@@ -1,11 +1,13 @@
-version: '3.8'
-
 services:
-  apache:
-    image: httpd:latest
-    container_name: apache_container
+  privaxnet_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5002:80"      # Porta para acessar o servidor
-    volumes:
-      - ./html:/usr/local/apache2/htdocs:ro   # Diretório para os arquivos estáticos
-    restart: always
+      - "5002:80"
+    networks:
+      - privaxnet_web_network
+
+networks:
+  privaxnet_web_network:
+    driver: bridge
